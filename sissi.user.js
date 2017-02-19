@@ -25,8 +25,23 @@ class URL {
     static formatUrl(url) {
         return url.replace(/^https:\/\//, '').replace(/\/$/, '');
     }
+
     static newUrl(url, path) {
-        return `${url.replace(/\/$/, '')}${path}`;
+        return `${url.replace(/\/$/, '')}${this.replaceSGE(url, path)}`;
+    }
+
+    static urlToSGE(url) {
+        if (url.includes('kaiserkraft') || url.includes('frankel') || url.includes('vinklisse')) {
+            return 'KK';
+        } else if (url.includes('gaerner') || url.includes('hoffmann-zeist') || url.includes('powellmailorder')) {
+            return 'GAE';
+        }
+    }
+
+    static replaceSGE(url, path) {
+        return path.replace(/\/c\/[0-9]+-([A-Z]+)\//, (match, p1) => {
+            return match.replace(p1, this.urlToSGE(url));
+        });
     }
 
     static redirect(url) {
@@ -327,8 +342,6 @@ class Controller {
     showResults() {
         this.references.list.innerHTML = ResultView.renderResultList(ResultView.style(), this.model.getIndex(), this.model.getMatches());
     }
-
-
 
     static appendSissi(mainViewHTML) {
         const wrapperDiv = window.document.createElement('div');
