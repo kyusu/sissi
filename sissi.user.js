@@ -8,7 +8,7 @@
 // @include https://*kaiserkraft*
 // @include https://*frankel*
 // @include https://*gaerner*
-// @include https://*hoffman-zeist*
+// @include https://*hoffmann-zeist*
 // @include https://*kwesto*
 // @include https://*powellmailorder*
 // @include https://*vinklisse*
