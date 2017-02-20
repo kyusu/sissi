@@ -13,7 +13,7 @@
 // @include https://*powellmailorder*
 // @include https://*vinklisse*
 // @include https://*-test*.kkeu.de
-// @exclude https://*.ec.kaiserkraft.de
+// @exclude https://*.ec.kaiserkraft.de*
 // @run-at document-end
 // @grant GM_setValue
 // @grant GM_getValue
