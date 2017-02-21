@@ -14,7 +14,7 @@
 // @include https://*vinklisse*
 // @include https://*-test*.kkeu.de
 // @exclude https://*.ec.kaiserkraft.de*
-// @run-at document-end
+// @run-at document-idle
 // @grant GM_setValue
 // @grant GM_getValue
 // @grant GM_log
@@ -83,6 +83,7 @@ class MainView extends View {
     static style() {
         const fixedStyle = {
             position: 'fixed',
+            'z-index': '2147483640',
             'background-color': '#ffe200'
         };
         const basicStyle = super.style();
