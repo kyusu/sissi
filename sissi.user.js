@@ -368,4 +368,7 @@ class Controller {
         }
     }
 }
-new Controller();
+if (window.self === window.top) {
+    // Do not open Sissi in iframes!
+    new Controller();
+}
