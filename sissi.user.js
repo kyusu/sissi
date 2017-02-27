@@ -14,10 +14,10 @@
 // @include https://*vinklisse*
 // @include https://*-test*.kkeu.de
 // @exclude https://*.ec.kaiserkraft.de*
-// @exclude https://*-test*.kkeu.de/hmc/*
-// @exclude https://*-test*.kkeu.de/admin/*
-// @exclude https://*-test*.kkeu.de/cmscockpit/*
-// @exclude https://*-test*.kkeu.de/*inder/*
+// @exclude https://*.kkeu.de/hmc/*
+// @exclude https://*.kkeu.de/admin/*
+// @exclude https://*.kkeu.de/cmscockpit/*
+// @exclude https://*.kkeu.de/*inder/*
 // @run-at document-idle
 // @grant GM_setValue
 // @grant GM_getValue
