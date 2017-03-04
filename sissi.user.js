@@ -23,6 +23,7 @@
 // @grant GM_getValue
 // @grant GM_log
 // @grant GM_xmlhttpRequest
+// @grant GM_setClipboard
 // @connect sissi.cloudno.de
 // ==/UserScript==
 
@@ -209,7 +210,7 @@ class MainView extends View {
         });
         references.input.addEventListener('keydown', (ev) => {
             if (ev.key === 'Enter' || ev.key === 'ArrowUp' || ev.key === 'ArrowDown') {
-                callbacks.keydown(ev.key);
+                callbacks.keydown(ev.key, ev.target.value);
             }
         });
         references.list.addEventListener('click', (ev) => {
@@ -348,10 +349,17 @@ class Controller {
                 this.model.filterLinks(term);
                 this.showResults();
             },
-            keydown: (eventName) => {
+            keydown: (eventName, inputValue) => {
                 if (eventName === 'Enter') {
-                    const siteURL = this.model.getMatches()[this.model.getIndex()];
-                    URL.redirect(URL.newUrl(siteURL, window.location.pathname));
+                    if (inputValue === '/path') {
+                        GM_setClipboard(window.location.pathname, 'text');
+                        this.references.input.value = '';
+                    } else {
+                        const siteURL = this.model.getMatches()[this.model.getIndex()];
+                        if (siteURL) {
+                            URL.redirect(URL.newUrl(siteURL, window.location.pathname));
+                        }
+                    }
                 } else if (eventName === 'ArrowUp') {
                     this.model.decrementIndex();
                     this.showResults();
