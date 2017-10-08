@@ -194,8 +194,8 @@ class MainView extends View {
             ev.target.style.opacity = '0.5';
         });
         references.anchor.addEventListener('dragend', (ev) => {
-            const bottom = window.innerHeight - ev.clientY - (parseInt(references.anchor.style.height, 10) / 2);
-            const right = window.innerWidth - ev.clientX - (parseInt(references.anchor.style.width, 10) / 2);
+            const bottom = window.innerHeight - ev.screenY + parseInt(references.anchor.style.height, 10);
+            const right = window.innerWidth - ev.screenX - (parseInt(references.anchor.style.width, 10) / 2);
             references.anchor.style.bottom = `${bottom}px`;
             references.anchor.style.right = `${right}px`;
             GM_setValue('sissi-position', `${bottom},${right}`);
