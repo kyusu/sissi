@@ -103,8 +103,8 @@ class MainView extends View {
             height: `${anchorDimensions.height - (2 * imageMargin)}px`,
             display: 'block',
         };
-        const bottom = (Math.sign(fixedPosition.bottom) !== -1 && Math.sign(fixedPosition.bottom - screenDim.y) === -1) ? fixedPosition.bottom : 0;
-        const right = (Math.sign(fixedPosition.right) !== -1 && Math.sign(fixedPosition.right - screenDim.x) === -1) ? fixedPosition.right : 0;
+        const bottom = (Math.sign(fixedPosition.bottom) !== -1 && Math.sign(fixedPosition.bottom + anchorDimensions.height - screenDim.y) === -1) ? fixedPosition.bottom : 0;
+        const right = (Math.sign(fixedPosition.right) !== -1 && Math.sign(fixedPosition.right + anchorDimensions.width - screenDim.x) === -1) ? fixedPosition.right : 0;
         return {
             anchor: {
                 style: Object.assign({}, fixedStyle, linkStyle, {
