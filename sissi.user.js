@@ -212,8 +212,10 @@ class MainView extends View {
                 callbacks.keydown(ev.key, ev.target.value);
             }
         });
-        references.list.addEventListener('click', (ev) => {
-
+        document.addEventListener('keyup', ev => {
+            if (ev.ctrlKey && ev.shiftKey && ev.key === 'S') {
+                callbacks.click().then(this.toggleInputField(references));
+            }
         });
         return references;
     }
